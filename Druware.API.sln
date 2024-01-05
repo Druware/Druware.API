@@ -15,14 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Controllers"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Contacts", "..\Druware.Server.Contacts\Druware.Server.Contacts.csproj", "{36CF16FB-049C-4E4B-8BCE-48C67B47CE36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Contacts.Controllers", "..\Druware.Server.Contacts.Controllers\Druware.Server.Contacts.Controllers.csproj", "{420CFAB3-03C4-4796-BC93-F695D99B2AA7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cudgel.Server", "..\Cudgel.Server\Cudgel.Server.csproj", "{986FE908-4431-418C-88AB-B06118DEF6C2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cudgel.Server.Controllers", "..\Cudgel.Server.Controllers\Cudgel.Server.Controllers.csproj", "{CFEB541A-8C56-4460-81F8-52A0C62B96EA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Products", "..\Druware.Server.Products\Druware.Server.Products.csproj", "{B0242781-AA47-4494-B345-A56D1620B5BC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,22 +45,6 @@ Global
 		{36CF16FB-049C-4E4B-8BCE-48C67B47CE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36CF16FB-049C-4E4B-8BCE-48C67B47CE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36CF16FB-049C-4E4B-8BCE-48C67B47CE36}.Release|Any CPU.Build.0 = Release|Any CPU
-		{420CFAB3-03C4-4796-BC93-F695D99B2AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{420CFAB3-03C4-4796-BC93-F695D99B2AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{420CFAB3-03C4-4796-BC93-F695D99B2AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{420CFAB3-03C4-4796-BC93-F695D99B2AA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{986FE908-4431-418C-88AB-B06118DEF6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{986FE908-4431-418C-88AB-B06118DEF6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{986FE908-4431-418C-88AB-B06118DEF6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{986FE908-4431-418C-88AB-B06118DEF6C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFEB541A-8C56-4460-81F8-52A0C62B96EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFEB541A-8C56-4460-81F8-52A0C62B96EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFEB541A-8C56-4460-81F8-52A0C62B96EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFEB541A-8C56-4460-81F8-52A0C62B96EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0242781-AA47-4494-B345-A56D1620B5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0242781-AA47-4494-B345-A56D1620B5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0242781-AA47-4494-B345-A56D1620B5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0242781-AA47-4494-B345-A56D1620B5BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
