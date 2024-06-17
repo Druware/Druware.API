@@ -33,6 +33,9 @@
     <ProjectReference Include="..\Druware.Extensions\Druware.Extensions.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\Druware.Server.Content.Controllers\Druware.Server.Content.Controllers.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
     <ProjectReference Include="..\Druware.Server\Druware.Server.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
@@ -55,5 +58,10 @@
     <None Remove="AutoMapper" />
     <None Remove="Microsoft.Extensions.Configuration" />
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\Druware.Server.Content.Controllers.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\project.packagespec.json" />
   </ItemGroup>
 </Project>
