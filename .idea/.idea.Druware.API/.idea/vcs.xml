@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/../Druware.Server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Druware.Server.Contacts" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Druware.Server.Content" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Druware.Server.Content.Controllers" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../Druware.Server.Controllers" vcs="Git" />
   </component>
 </project>

@@ -1,11 +1,16 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 using Druware.API;
 using Druware.Server;
 using Druware.Server.Content;
 using Druware.Server.Entities;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 // dotnet ef migrations add Init
 
@@ -60,6 +65,19 @@ switch (settings.DbType)
         builder.Services.AddDbContext<ContentContextPostgreSql>(
             conf => conf.UseNpgsql(cs));
         break;
+    
+    case DbContextType.Sqlite:
+        builder.Services.AddDbContext<ServerContext>(
+            conf => conf.UseSqlite(cs));
+        builder.Services.AddDbContext<ContentContext>(
+            conf => conf.UseSqlite(cs));
+        
+        builder.Services.AddDbContext<ServerContextSqlite>(
+            conf => conf.UseSqlite(cs)); 
+        builder.Services.AddDbContext<ContentContextSqlite>(
+             conf => conf.UseSqlite(cs));
+        break;
+    
     default:
         throw new ArgumentOutOfRangeException();
 }

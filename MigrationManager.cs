@@ -1,6 +1,10 @@
-﻿using Druware.Server;
+﻿using System;
+using Druware.Server;
 using Druware.Server.Content;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Druware.API
 {
@@ -34,13 +38,15 @@ namespace Druware.API
                     contentContext = scope.ServiceProvider
                         .GetRequiredService<ContentContextPostgreSql>();
                     break;
+                case DbContextType.Sqlite:
+                    serverContext = scope.ServiceProvider
+                        .GetRequiredService<ServerContextSqlite>();
+                    contentContext = scope.ServiceProvider
+                        .GetRequiredService<ContentContextSqlite>();
+                    break;
                 default:
                     throw new Exception("Unknown DbType");
             }
-//            serverContext = scope.ServiceProvider
-//                .GetRequiredService<ServerContext>();
-//            contentContext = scope.ServiceProvider
-//                .GetRequiredService<ContentContext>();
 
             if (serverContext == null) 
                 throw new Exception("No ServerContext is available");
