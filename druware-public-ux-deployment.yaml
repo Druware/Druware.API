@@ -1,0 +1,30 @@
+
+# Deploy the front end
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ux
+  namespace: druware-public-web
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: druware-ux
+  template:
+    metadata:
+      labels:
+        app: druware-ux
+    spec:
+      containers:
+        - name: druware-ux
+          image: druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.web
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: druwareprivate
+
+---
+
+
+  

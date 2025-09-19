@@ -5,18 +5,6 @@ VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.API", "Druware.API.csproj", "{7A5D29F4-BB0D-4E3B-ABEE-4A07BD49565E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Extensions", "..\Druware.Extensions\Druware.Extensions.csproj", "{FE45FD3E-6970-4127-9A2A-AFFFDCD81CCE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server", "..\Druware.Server\Druware.Server.csproj", "{30E3B66E-6121-439F-B326-E1433E743350}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Content", "..\Druware.Server.Content\Druware.Server.Content.csproj", "{9E59FA0C-CB38-4125-9833-1CD5AC26F58A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Controllers", "..\Druware.Server.Controllers\Druware.Server.Controllers.csproj", "{530488B1-20BE-4506-A977-44985511FFE8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Contacts", "..\Druware.Server.Contacts\Druware.Server.Contacts.csproj", "{36CF16FB-049C-4E4B-8BCE-48C67B47CE36}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Content.Controllers", "..\Druware.Server.Content.Controllers\Druware.Server.Content.Controllers.csproj", "{FD1A1855-CE74-4AB1-9371-CC0954E93645}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb
+  namespace: druware-public-web
+spec:
+  selector:
+    app: druware-public-web
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080

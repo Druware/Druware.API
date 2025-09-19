@@ -352,4 +352,5 @@ appsettings.json
 druware.db-wal
 druware.db-shm
 druware.db
-.idea/.idea.Druware.API/.idea/vcs.xml
+.idea/
+.DS_Store/

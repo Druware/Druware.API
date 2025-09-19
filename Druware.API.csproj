@@ -5,9 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.*" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.*" />
@@ -26,38 +28,14 @@
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.*" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Druware.Extensions\Druware.Extensions.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Druware.Server.Content.Controllers\Druware.Server.Content.Controllers.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Druware.Server\Druware.Server.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Druware.Server.Content\Druware.Server.Content.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\Druware.Server.Controllers\Druware.Server.Controllers.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <PackageReference Include="Druware.Server" Version="1.1.*" />
+    <PackageReference Include="Druware.Server.Controllers" Version="1.1.*" />    
+    <PackageReference Include="Druware.Server.Content" Version="1.1.*" />
+    <PackageReference Include="Druware.Server.Content.Controllers" Version="1.*" />
+    <PackageReference Include="Druware.Extensions" Version="1.1.6" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Microsoft.Extensions.DependencyInjection" />
-    <None Remove="Microsoft.EntityFrameworkCore" />
-    <None Remove="Microsoft.AspNetCore.Identity" />
-    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-    <None Remove="Microsoft.EntityFrameworkCore.Relational" />
-    <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
-    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
-    <None Remove="AutoMapper" />
-    <None Remove="Microsoft.Extensions.Configuration" />
-    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
-  </ItemGroup>
+  
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\Druware.Server.Content.Controllers.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\project.assets.json" />
