@@ -34,6 +34,7 @@
     <PackageReference Include="Druware.Server.Content" Version="1.1.*" />
     <PackageReference Include="Druware.Server.Content.Controllers" Version="1.*" />
     <PackageReference Include="Druware.Extensions" Version="1.1.6" />
+    <PackageReference Include="RESTfulFoundation.Server" Version="1.0.2" />
   </ItemGroup>
   
   <ItemGroup>
