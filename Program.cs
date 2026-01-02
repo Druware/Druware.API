@@ -4,34 +4,45 @@ using Druware.API;
 using Druware.Server;
 using Druware.Server.Content;
 using Druware.Server.Entities;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 // dotnet ef migrations add Init
 
-const string connectionString = "Host=localhost;Database=druware;Username=postgres;Password=blahblahblah!";
-
 var builder = WebApplication.CreateBuilder(args);
+
+string? altAppSettings = null;
+for (var i = 0; i < args.Length; i++)
+{
+    var arg = args[i];
+    if (arg.ToLower().StartsWith("--settings"))
+    {
+        altAppSettings = args[i + 1];
+        break;
+    }
+}
 
 // Some Custom Setup
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: false)
+    .AddJsonFile(altAppSettings ?? "appsettings.json", optional: false)
+    .AddCommandLine(args)
     .Build();
 
 var settings = new AppSettings(configuration);
-var cs = (string.IsNullOrEmpty(settings.ConnectionString)) ? 
-    connectionString : settings.ConnectionString;
+
+// check teh command line, if the connectionString is found there, override 
+// the value found in the appsettings.json file, even if the altAppSettings is
+// provided
+var connectionString = configuration.GetValue<string>("connectionString");
+if (string.IsNullOrEmpty(settings.ConnectionString))
+    throw new Exception("No Connection String Found, system cannot start without.");
+var cs =  string.IsNullOrEmpty(connectionString) ? settings.ConnectionString : connectionString;
 
 // Will probably want AutoMapper ( NuGet: AutoMapper )
 builder.Services.AddAutoMapper(typeof(Program));
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);

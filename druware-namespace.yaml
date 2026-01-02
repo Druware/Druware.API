@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: druware-public-web
-  labels:
-      name: druware-public-web

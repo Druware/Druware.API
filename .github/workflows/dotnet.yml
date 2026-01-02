@@ -16,6 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Login to ACR
+      uses: docker/login-action@v3
+      with:
+        registry: druwareprivate-fda5fvafgddhbsas.azurecr.io
+        username: ${{ secrets.AZURE_CLIENT_ID }}
+        password: ${{ secrets.AZURE_CLIENT_SECRET }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -23,6 +29,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release --output app --no-restore
+    - name: Dockerize
+      run: |
+        docker build -t druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.api ./docker
+        docker push druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.api
     - name: Test
       run: dotnet test --no-build --verbosity normal

@@ -9,11 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.20" />
+    <!-- PropertyGroup necessary references -->
+    <None Include="./.github/workflows/dotnet.yml" Pack="false" PackagePath="dotnet.yml"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Druware.Server.Content" Version="1.1.12" />
+    <PackageReference Include="Druware.Server.Content.Controllers" Version="1.1.6" />
+    <PackageReference Include="Druware.Server.Controllers" Version="1.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.*" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.*">
@@ -30,16 +38,8 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 
     <PackageReference Include="Druware.Server" Version="1.1.*" />
-    <PackageReference Include="Druware.Server.Controllers" Version="1.1.*" />    
-    <PackageReference Include="Druware.Server.Content" Version="1.1.*" />
-    <PackageReference Include="Druware.Server.Content.Controllers" Version="1.*" />
     <PackageReference Include="Druware.Extensions" Version="1.1.6" />
     <PackageReference Include="RESTfulFoundation.Server" Version="1.0.2" />
   </ItemGroup>
   
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\Druware.Server.Content.Controllers.csproj.nuget.dgspec.json" />
-    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\project.assets.json" />
-    <_ContentIncludedByDefault Remove="Druware.Server.Content.Controllers\obj\project.packagespec.json" />
-  </ItemGroup>
 </Project>

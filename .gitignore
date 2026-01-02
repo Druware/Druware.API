@@ -354,3 +354,4 @@ druware.db-shm
 druware.db
 .idea/
 .DS_Store/
+app/

@@ -18,3 +18,7 @@ The Server API for the Druware Website(s)
   * public.Asp*
 
 ## Change Log
+
+docker buildx build --platform linux/amd64 t druware.azurecr.io/com.druware.api .
+docker build -t druware.azurecr.io/com.druware.api .
+docker push druware.azurecr.io/com.druware.api
