@@ -5,10 +5,6 @@ VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.API", "Druware.API.csproj", "{7A5D29F4-BB0D-4E3B-ABEE-4A07BD49565E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Content.Controllers", "..\Druware.Server.Content.Controllers\Druware.Server.Content.Controllers\Druware.Server.Content.Controllers.csproj", "{A6A06A4C-A434-4B03-82AA-6F5B3F935E19}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Druware.Server.Content", "..\Druware.Server.Content\Druware.Server.Content\Druware.Server.Content.csproj", "{9FA693E3-4F33-4EA5-82D4-47DD22494ECA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
