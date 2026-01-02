@@ -30,7 +30,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: |
-        cd Druware.API dotnet build --configuration Release --output app --no-restore
+        cd Druware.API 
+        dotnet build --configuration Release --output app --no-restore
     - name: Dockerize
       run: |
         cd Druware.API
