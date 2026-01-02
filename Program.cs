@@ -12,20 +12,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string? altAppSettings = null;
-for (var i = 0; i < args.Length; i++)
-{
-    var arg = args[i];
-    if (arg.ToLower().StartsWith("--settings"))
-    {
-        altAppSettings = args[i + 1];
-        break;
-    }
-}
-
 // Some Custom Setup
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile(altAppSettings ?? "appsettings.json", optional: false)
+    .AddJsonFile("appsettings.json", optional: false)
     .AddCommandLine(args)
     .Build();
 
