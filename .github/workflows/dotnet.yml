@@ -29,12 +29,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: |
-        cd Druware.API 
-        dotnet build --configuration Release --output app --no-restore
+      run: dotnet build --configuration Release --output app --no-restore Druware.API.csproj
     - name: Dockerize
       run: |
-        cd Druware.API
         docker build -t druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.api .
         docker push druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.api
     - name: Test
