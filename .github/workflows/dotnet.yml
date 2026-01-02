@@ -30,6 +30,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --output app --no-restore Druware.API.csproj
+    - name: Generate AppSettings.json
+      run: echo "${{ secrets.AZURE_CLIENT_SECRET }} > app/appsettings.json"
     - name: Dockerize
       run: |
         docker build -t druwareprivate-fda5fvafgddhbsas.azurecr.io/com.druware.api .
