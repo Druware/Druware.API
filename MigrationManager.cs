@@ -13,14 +13,12 @@ namespace Druware.API
 
         public static WebApplication MigrateDatabase(this WebApplication host)
         {
-            // can we get to a settings object? 
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false)
-                .Build();
+            using var scope = host.Services.CreateScope();
+            
+            // Access the configuration already registered in the service provider
+            var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
             var settings = new AppSettings(configuration);
             
-            using var scope = host.Services.CreateScope();
-
             // get the correct context.
             DbContext? serverContext;
             DbContext? contentContext;

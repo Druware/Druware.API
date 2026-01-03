@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// WOW I am an idiot. Because this configuraiton is used elsewhere, this MUST 
+// be handling using the configuration manager, and inside the AppSettings itself
+
 Console.WriteLine($"Checking Command Line Args:");
 
 string? altAppSettings = null;
@@ -22,7 +26,7 @@ for (var i = 0; i < args.Length; i++)
     if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
-        Console.WriteLine($"Found Settings Arg: {altAppSettings}");
+        // Console.WriteLine($"Found Settings Arg: {altAppSettings}");
         break;
     }
 }
@@ -41,14 +45,7 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 var settings = new AppSettings(configuration);
-
-// check teh command line, if the connectionString is found there, override 
-// the value found in the appsettings.json file, even if the altAppSettings is
-// provided
-var connectionString = configuration.GetValue<string>("connectionString");
-if (string.IsNullOrEmpty(settings.ConnectionString))
-    throw new Exception("No Connection String Found, system cannot start without.");
-var cs =  string.IsNullOrEmpty(connectionString) ? settings.ConnectionString : connectionString;
+var cs = settings.ConnectionString;
 
 // Will probably want AutoMapper ( NuGet: AutoMapper )
 builder.Services.AddAutoMapper(typeof(Program));

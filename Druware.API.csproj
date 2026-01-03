@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Druware.Server.Content" Version="1.1.12" />
     <PackageReference Include="Druware.Server.Content.Controllers" Version="1.1.6" />
-    <PackageReference Include="Druware.Server.Controllers" Version="1.1.8" />
+    <PackageReference Include="Druware.Server.Controllers" Version="1.1.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.*" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.*" />
@@ -37,8 +37,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.*" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 
-    <PackageReference Include="Druware.Server" Version="1.1.*" />
-    <PackageReference Include="Druware.Extensions" Version="1.1.6" />
+    <PackageReference Include="Druware.Server" Version="1.1.7" />
+    <PackageReference Include="Druware.Extensions" Version="1.1.10" />
     <PackageReference Include="RESTfulFoundation.Server" Version="1.0.2" />
   </ItemGroup>
   
