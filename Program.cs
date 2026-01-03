@@ -12,20 +12,31 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Console.WriteLine($"Checking Command Line Args:");
+
 string? altAppSettings = null;
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
-    if (arg.ToLower().StartsWith("--settings"))
+    Console.WriteLine($"Arg: {arg}");
+    if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
+        Console.WriteLine($"Found Settings Arg: {altAppSettings}");
         break;
     }
+}
+var appSettings = string.IsNullOrEmpty(altAppSettings) ? "appsettings.json" : altAppSettings;
+Console.WriteLine($"Checking for settings file: {appSettings}");
+if (!File.Exists(appSettings))
+{
+    Console.WriteLine($"Unable to find file settings file: {appSettings}");
+    throw new Exception("Unable to find settings file.");
 }
 
 // Some Custom Setup
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile(altAppSettings ?? "appsettings.json", optional: false)
+    .AddJsonFile(appSettings, optional: false)
     .AddCommandLine(args)
     .Build();
 

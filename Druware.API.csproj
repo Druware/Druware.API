@@ -42,4 +42,13 @@
     <PackageReference Include="RESTfulFoundation.Server" Version="1.0.2" />
   </ItemGroup>
   
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="app\web.config" />
+    <_ContentIncludedByDefault Remove="app\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="app\appsettings.Template.json" />
+    <_ContentIncludedByDefault Remove="app\Druware.API.deps.json" />
+    <_ContentIncludedByDefault Remove="app\Druware.API.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="app\Druware.API.staticwebassets.endpoints.json" />
+  </ItemGroup>
+  
 </Project>
