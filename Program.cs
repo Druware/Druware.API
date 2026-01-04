@@ -16,36 +16,42 @@ var builder = WebApplication.CreateBuilder(args);
 // WOW I am an idiot. Because this configuraiton is used elsewhere, this MUST 
 // be handling using the configuration manager, and inside the AppSettings itself
 
-Console.WriteLine($"Checking Command Line Args:");
+// TODO: Add a bunch of checks to determine our DB connectivity at start up and
+//       provide decent logging, up to, and including launching the appplication
+//       without DB connectivity, with a status service that demonstrates that 
+//       the service is up, and can periodically retry the database.
+
+// =============================================================================
+// Establish all of the parameters we need for starting the application up, 
+// using the appSetgtings.json and the command line.
+// =============================================================================
 
 string? altAppSettings = null;
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
-    Console.WriteLine($"Arg: {arg}");
     if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
-        // Console.WriteLine($"Found Settings Arg: {altAppSettings}");
         break;
     }
 }
 var appSettings = string.IsNullOrEmpty(altAppSettings) ? "appsettings.json" : altAppSettings;
-Console.WriteLine($"Checking for settings file: {appSettings}");
 if (!File.Exists(appSettings))
 {
     Console.WriteLine($"Unable to find file settings file: {appSettings}");
     throw new Exception("Unable to find settings file.");
 }
-
-// Some Custom Setup
 var configuration = new ConfigurationBuilder()
     .AddJsonFile(appSettings, optional: false)
     .AddCommandLine(args)
     .Build();
-
 var settings = new AppSettings(configuration);
 var cs = settings.ConnectionString;
+
+// =============================================================================
+// Now that we have the startup parameters, let is set up the application itself
+// =============================================================================
 
 // Will probably want AutoMapper ( NuGet: AutoMapper )
 builder.Services.AddAutoMapper(typeof(Program));
@@ -55,11 +61,31 @@ builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
+// This API is using the IdentityFramework, so go ahead and configure that as
+// well, note, this is all implemented in the OpenBCM.API.Authentication.dll
+// library 
+builder.Services.AddIdentity<User, Role>(config =>
+    {
+        config.Password.RequiredLength = 8;
+        config.User.RequireUniqueEmail = true;
+        config.SignIn.RequireConfirmedEmail = true;
+    })
+    .AddEntityFrameworkStores<ServerContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.Cookie.Name = "Druware.API";
+    config.LoginPath = "/login/";
+});
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+
 // DbContext stuff
 // Repeat the following for each library context added
 // bear in mind, this will be different depending upon the backend, so get the 
 // backend right first.
-
 switch (settings.DbType)
 {
     case DbContextType.Microsoft:
@@ -94,52 +120,50 @@ switch (settings.DbType)
         builder.Services.AddDbContext<ServerContextSqlite>(
             conf => conf.UseSqlite(cs)); 
         builder.Services.AddDbContext<ContentContextSqlite>(
-             conf => conf.UseSqlite(cs));
+            conf => conf.UseSqlite(cs));
         break;
     
     default:
         throw new ArgumentOutOfRangeException();
 }
 
-// This API is using the IdentityFramework, so go ahead and configure that as
-// well, note, this is all implemented in the OpenBCM.API.Authentication.dll
-// library 
-builder.Services.AddIdentity<User, Role>(config =>
-    {
-        config.Password.RequiredLength = 8;
-        config.User.RequireUniqueEmail = true;
-        config.SignIn.RequireConfirmedEmail = true;
-    })
-    .AddEntityFrameworkStores<ServerContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.ConfigureApplicationCookie(config =>
-{
-    config.Cookie.Name = "Druware.API";
-    config.LoginPath = "/login/";
-});
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
+// =============================================================================
+// at this point, we have every thing we need to start up the application, so 
+// we can move on.
+// =============================================================================
 
 var app = builder.Build();
-
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.XForwardedFor |
     ForwardedHeaders.XForwardedProto
 });
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
+// =============================================================================
+// here is where things get twitchy. If the database fails for any reason, this
+// fails, and in Azure it is excepptionally difficult to get the logs at this 
+// point in the startup process.  With that in mind, we need to move the 
+// database migration to a seperate thread that we can check for completion
+// via a 'status' controller that will let us know what is really going on 
+// behind the scenes. 
+//
+// as a short term solution, we are actually going to simply handle, and ignore
+// the exceptions during migration, and let things progress on their own.
+// =============================================================================
+
 // Run the migrations this API calls
-app.MigrateDatabase();
+try
+{
+    app.MigrateDatabase();
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Unable to migrate database: {ex.Message}");
+}
 
 app.Run();
 
