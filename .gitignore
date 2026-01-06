@@ -357,3 +357,4 @@ druware.db
 .idea/
 .DS_Store/
 app/
+Properties/launchSettings.json

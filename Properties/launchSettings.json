@@ -13,6 +13,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "commandLineArgs": "--connectionstring \"Server=tcp:trustwin-production.database.windows.net,1433;Initial Catalog=satori-web-db;Persist Security Info=False;User ID=tw-sql;Password=Thi$PassIs4Admin!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;\"",
       "applicationUrl": "http://192.168.68.53:8000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
