@@ -349,6 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 #appsettings.json
+/Properties/launchSettings.json
+
 druware.db-wal
 druware.db-shm
 druware.db
