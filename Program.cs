@@ -27,7 +27,8 @@ var builder = WebApplication.CreateBuilder(args);
 // =============================================================================
 
 string? altAppSettings = null;
-string? altCs = null;
+string? altCs = null; // read the Azure Environment variable
+altCs = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_DruwareAPI");
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
@@ -35,12 +36,6 @@ for (var i = 0; i < args.Length; i++)
     if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
-        break;
-    }
-    if (arg.StartsWith("--connectionstring", StringComparison.CurrentCultureIgnoreCase))
-    {
-        Console.WriteLine($"ConnectionString: {args[i + 1]}");
-        altCs = args[i + 1];
         break;
     }
 }
