@@ -12,10 +12,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// WOW I am an idiot. Because this configuraiton is used elsewhere, this MUST 
-// be handling using the configuration manager, and inside the AppSettings itself
-
 // TODO: Add a bunch of checks to determine our DB connectivity at start up and
 //       provide decent logging, up to, and including launching the appplication
 //       without DB connectivity, with a status service that demonstrates that 
@@ -28,7 +24,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 string? altAppSettings = null;
 string? altCs = null; // read the Azure Environment variable
-altCs = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_DruwareAPI");
+altCs = Environment.GetEnvironmentVariable("SQLCONNSTR_DruwareAPI");
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
