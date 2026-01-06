@@ -28,7 +28,6 @@ altCs = Environment.GetEnvironmentVariable("SQLCONNSTR_DruwareAPI");
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
-    Console.WriteLine($"Arg: {arg}");
     if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
@@ -47,7 +46,7 @@ var configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .Build();
 var settings = new AppSettings(configuration);
-var cs = string.IsNullOrEmpty(altCs) ? altCs : settings.ConnectionString;
+var cs = string.IsNullOrEmpty(altCs) ? settings.ConnectionString : altCs;
 
 // DEBUG:
 Console.WriteLine($"ConnectionString: {cs}");
