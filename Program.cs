@@ -31,6 +31,7 @@ string? altCs = null;
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
+    Console.WriteLine($"Arg: {arg}");
     if (arg.StartsWith("--settings", StringComparison.CurrentCultureIgnoreCase))
     {
         altAppSettings = args[i + 1];
@@ -38,6 +39,7 @@ for (var i = 0; i < args.Length; i++)
     }
     if (arg.StartsWith("--connectionstring", StringComparison.CurrentCultureIgnoreCase))
     {
+        Console.WriteLine($"ConnectionString: {args[i + 1]}");
         altCs = args[i + 1];
         break;
     }
