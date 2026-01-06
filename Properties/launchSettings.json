@@ -11,7 +11,7 @@
   "profiles": {
     "Druware.API": {
       "commandName": "Project",
-      "commandLineArgs": "--connectionstring \"Server=tcp:druware-production.database.windows.net,1433;Initial Catalog=druware-pub-db;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;User ID=dsd-admin;Password=4NullGrapes&RowdyFlowers!;\"",
+      "commandLineArgs": "--connectionstring \"Server=tcp:trustwin-production.database.windows.net,1433;Initial Catalog=satori-web-db;Persist Security Info=False;User ID=tw-sql;Password=Thi$PassIs4Admin!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;\"",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "http://192.168.68.53:8000",

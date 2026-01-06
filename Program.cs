@@ -49,6 +49,9 @@ var configuration = new ConfigurationBuilder()
 var settings = new AppSettings(configuration);
 var cs = settings.ConnectionString;
 
+// DEBUG:
+Console.WriteLine($"ConnectionString: {cs}");
+
 // =============================================================================
 // Now that we have the startup parameters, let is set up the application itself
 // =============================================================================
