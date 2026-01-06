@@ -27,6 +27,7 @@ var builder = WebApplication.CreateBuilder(args);
 // =============================================================================
 
 string? altAppSettings = null;
+string? altCs = null;
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
@@ -35,7 +36,13 @@ for (var i = 0; i < args.Length; i++)
         altAppSettings = args[i + 1];
         break;
     }
+    if (arg.StartsWith("--connectionstring", StringComparison.CurrentCultureIgnoreCase))
+    {
+        altCs = args[i + 1];
+        break;
+    }
 }
+
 var appSettings = string.IsNullOrEmpty(altAppSettings) ? "appsettings.json" : altAppSettings;
 if (!File.Exists(appSettings))
 {
@@ -47,7 +54,7 @@ var configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .Build();
 var settings = new AppSettings(configuration);
-var cs = settings.ConnectionString;
+var cs = string.IsNullOrEmpty(altCs) ? altCs : settings.ConnectionString;
 
 // DEBUG:
 Console.WriteLine($"ConnectionString: {cs}");
