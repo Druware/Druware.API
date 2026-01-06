@@ -23,8 +23,6 @@ var builder = WebApplication.CreateBuilder(args);
 // =============================================================================
 
 string? altAppSettings = null;
-string? altCs = null; // read the Azure Environment variable
-altCs = Environment.GetEnvironmentVariable("SQLCONNSTR_DruwareAPI");
 for (var i = 0; i < args.Length; i++)
 {
     var arg = args[i];
@@ -46,7 +44,7 @@ var configuration = new ConfigurationBuilder()
     .AddCommandLine(args)
     .Build();
 var settings = new AppSettings(configuration);
-var cs = string.IsNullOrEmpty(altCs) ? settings.ConnectionString : altCs;
+var cs = settings.ConnectionString;
 
 // DEBUG:
 Console.WriteLine($"ConnectionString: {cs}");

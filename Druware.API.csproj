@@ -37,7 +37,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.*" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 
-    <PackageReference Include="Druware.Server" Version="1.1.8" />
+    <PackageReference Include="Druware.Server" Version="1.1.9" />
     <PackageReference Include="Druware.Extensions" Version="1.1.10" />
     <PackageReference Include="RESTfulFoundation.Server" Version="1.0.2" />
   </ItemGroup>
